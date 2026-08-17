@@ -6,7 +6,7 @@ const WORDS = ["Now", "is", "the", "time."];
 const STAGGER_MS = 190;
 const WORD_DURATION_MS = 700;
 const HOLD_MS = 650;
-const EXIT_DURATION_MS = 600;
+const EXIT_DURATION_MS = 1000;
 
 export function IntroOverlay() {
   const [phase, setPhase] = useState<"in" | "out" | "done">("in");
@@ -33,23 +33,30 @@ export function IntroOverlay() {
   if (phase === "done") return null;
 
   return (
-    <div
-      aria-hidden
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-tokens-bg-weak)] transition-opacity duration-[600ms] ease-out ${
-        phase === "out" ? "opacity-0" : "opacity-100"
-      }`}
-    >
-      <p className="flex gap-3 text-[32px] font-medium tracking-[-1.2px] text-[color:var(--color-tokens-text-strongest)] sm:text-[40px] md:text-[length:var(--text-headings-h2-500-font-size)] md:leading-[var(--text-headings-h2-500-line-height)] md:tracking-[var(--text-headings-h2-500-letter-spacing)]">
-        {WORDS.map((word, i) => (
-          <span
-            key={word}
-            className="animate-word-in inline-block"
-            style={{ animationDelay: `${i * STAGGER_MS}ms` }}
-          >
-            {word}
-          </span>
-        ))}
-      </p>
+    <div aria-hidden className="fixed inset-0 z-50">
+      <div
+        className={`absolute inset-0 flex items-center justify-center overflow-hidden bg-[var(--color-tokens-bg-weak)] transition-transform duration-[1000ms] ease-[var(--ease-smooth)] will-change-transform ${
+          phase === "out" ? "-translate-y-[100vh]" : "translate-y-0"
+        }`}
+      >
+        <div
+          className={`transition-transform duration-[1000ms] ease-[var(--ease-smooth)] will-change-transform ${
+            phase === "out" ? "translate-y-[100vh]" : "translate-y-0"
+          }`}
+        >
+          <p className="flex gap-3 text-[32px] font-medium tracking-[-1.2px] text-[color:var(--color-tokens-text-strongest)] sm:text-[40px] md:text-[length:var(--text-headings-h2-500-font-size)] md:leading-[var(--text-headings-h2-500-line-height)] md:tracking-[var(--text-headings-h2-500-letter-spacing)]">
+            {WORDS.map((word, i) => (
+              <span
+                key={word}
+                className="animate-word-in inline-block"
+                style={{ animationDelay: `${i * STAGGER_MS}ms` }}
+              >
+                {word}
+              </span>
+            ))}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

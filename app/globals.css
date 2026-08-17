@@ -6,6 +6,7 @@
 :root {
   --background: var(--color-tokens-bg-weak);
   --foreground: var(--color-tokens-text-strongest);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
@@ -35,7 +36,7 @@ body {
 }
 
 .animate-word-in {
-  animation: word-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: word-in 700ms var(--ease-smooth) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
