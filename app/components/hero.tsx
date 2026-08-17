@@ -2,10 +2,10 @@ import { SiteHeader } from "./site-header";
 
 export function Hero() {
   return (
-    <section className="relative flex h-[720px] w-full flex-col overflow-hidden md:h-[878px]">
+    <section className="relative z-10 flex h-dvh w-full flex-col overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-800 via-zinc-900 to-black" />
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-dvh w-full object-cover"
         autoPlay
         muted
         loop
@@ -18,7 +18,7 @@ export function Hero() {
 
       <SiteHeader />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-1 flex-col items-center justify-end gap-14 px-6 pb-16 text-center md:gap-24 md:pb-24">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-1 flex-col items-center justify-end gap-14 px-6 pb-12 text-center md:gap-24">
         <div className="flex w-full flex-col items-center gap-5 text-[color:var(--color-tokens-text-static)]">
           <div className="flex flex-col items-center leading-[1.05] tracking-[var(--text-display-l-700-letter-spacing)] md:leading-[var(--text-display-l-700-line-height)]">
             <p className="text-[44px] sm:text-[56px] md:text-[length:var(--text-display-l-700-font-size)]">

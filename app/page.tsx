@@ -4,7 +4,7 @@ import { IntroOverlay } from "./components/intro-overlay";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative mb-12">
       <IntroOverlay />
       <Hero />
       <HeroShowcase />
